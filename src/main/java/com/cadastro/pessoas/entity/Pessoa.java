@@ -1,11 +1,10 @@
-package com.cadastro.pessoas.domain.entity;
+package com.cadastro.pessoas.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -33,20 +32,23 @@ public class Pessoa {
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(nullable = false, length = 8)
+    @Column(length = 8)
     private String cep;
 
-    @Column(nullable = false, length = 200)
+    @Column(length = 200)
     private String logradouro;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String bairro;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String cidade;
 
-    @Column(nullable = false, length = 2)
+    @Column(length = 2)
     private String uf;
+
+    @Column(length = 10)
+    private String numero;
 
     @Column(length = 100)
     private String complemento;
