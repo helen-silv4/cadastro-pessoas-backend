@@ -1,0 +1,28 @@
+services:
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: cadastro-sqlserver
+    environment:
+      SA_PASSWORD: "Cadastro@123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  backend:
+    build: .
+    container_name: cadastro-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:sqlserver://db:1433;databaseName=cadastro_pessoas;encrypt=false
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: Cadastro@123
+    depends_on:
+      - db
+    restart: on-failure
+
+volumes:
+  sqlserver_data:

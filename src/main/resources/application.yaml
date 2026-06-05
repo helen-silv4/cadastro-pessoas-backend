@@ -3,9 +3,9 @@ spring:
     name: pessoas-backend
 
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=cadastro_pessoas;encrypt=false
+    url: jdbc:sqlserver://db:1433;databaseName=master;encrypt=false
     username: sa
-    password: xxxxxx
+    password: Cadastro@123
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   jpa:
@@ -16,3 +16,6 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+    url: jdbc:sqlserver://db:1433;databaseName=master;encrypt=false
+    user: sa
+    password: Cadastro@123
