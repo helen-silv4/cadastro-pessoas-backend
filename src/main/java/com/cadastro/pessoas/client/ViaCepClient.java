@@ -19,7 +19,7 @@ public class ViaCepClient {
     public boolean cepExiste(String cep) {
         try {
             ViaCepResponse response = restTemplate.getForObject(VIA_CEP_URL, ViaCepResponse.class, cep);
-            if (response == null || response.isErro()) {
+            if (response == null || "true".equals(response.getErro())) {
                 log.warn("CEP não encontrado: {}", cep);
                 return false;
             }
@@ -38,6 +38,6 @@ public class ViaCepClient {
         private String bairro;
         private String localidade;
         private String uf;
-        private boolean erro;
+        private String erro;
     }
 }
