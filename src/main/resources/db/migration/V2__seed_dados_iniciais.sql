@@ -1,0 +1,20 @@
+CREATE TABLE pessoa (
+    id              BIGINT IDENTITY(1,1) NOT NULL,
+    nome            VARCHAR(150)         NOT NULL,
+    documento       VARCHAR(14)          NOT NULL,
+    email           VARCHAR(100)         NOT NULL,
+    data_nascimento DATE                 NOT NULL,
+    cep             VARCHAR(8),
+    logradouro      VARCHAR(200),
+    bairro          VARCHAR(100),
+    cidade          VARCHAR(100),
+    uf              VARCHAR(2),
+    numero          VARCHAR(10),
+    complemento     VARCHAR(100),
+    login           VARCHAR(7)           NOT NULL,
+    criado_em       DATETIME             NOT NULL,
+    CONSTRAINT PK_pessoa    PRIMARY KEY (id),
+    CONSTRAINT UQ_documento UNIQUE (documento),
+    CONSTRAINT UQ_email     UNIQUE (email),
+    CONSTRAINT UQ_login     UNIQUE (login)
+);
