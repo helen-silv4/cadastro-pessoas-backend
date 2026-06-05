@@ -1,5 +1,6 @@
 package com.cadastro.pessoas.service;
 
+import com.cadastro.pessoas.client.ViaCepClient;
 import com.cadastro.pessoas.dto.PessoaRequest;
 import com.cadastro.pessoas.dto.PessoaResponse;
 import com.cadastro.pessoas.entity.Pessoa;
@@ -18,6 +19,7 @@ public class PessoaService {
 
     private final PessoaRepository pessoaRepository;
     private final LoginStrategy loginStrategy;
+    private final ViaCepClient viaCepClient;
 
     public PessoaResponse cadastrar(PessoaRequest request) {
 
@@ -29,6 +31,11 @@ public class PessoaService {
         // valida unicidade do e-mail
         if (pessoaRepository.existsByEmail(request.getEmail())) {
             throw new IllegalArgumentException("E-mail já cadastrado");
+        }
+
+        // valida se o CEP existe no ViaCEP
+        if (!viaCepClient.cepExiste(request.getCep())) {
+            throw new IllegalArgumentException("CEP não encontrado");
         }
 
         // busca logins existentes e gera o login
