@@ -1,4 +1,7 @@
 package com.cadastro.pessoas.strategy;
 
-public class LoginStrategy {
+import java.util.Set;
+
+public interface LoginStrategy {
+    String gerar(String nome, Set<String> loginsExistentes);
 }
