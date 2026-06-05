@@ -1,19 +1,15 @@
-package com.cadastro.pessoas.exception;
+package com.cadastro.pessoas.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = CPFValidator.class)
-@Target({ElementType.FIELD})
+@Constraint(validatedBy = DataNascimentoValidator.class)
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CPFValido {
-
-    String message() default "CPF inválido";
-
+public @interface DataNascimentoValida {
+    String message() default "Data de nascimento inválida";
     Class<?>[] groups() default {};
-
     Class<? extends Payload>[] payload() default {};
 }
