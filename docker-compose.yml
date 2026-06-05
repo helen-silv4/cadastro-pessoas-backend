@@ -45,5 +45,13 @@ services:
         condition: service_completed_successfully
     restart: on-failure
 
+  frontend:
+    build: ../frontend
+    container_name: cadastro-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
 volumes:
   sqlserver_data:
