@@ -1,5 +1,6 @@
 package com.cadastro.pessoas.entity;
 
+import com.cadastro.pessoas.validation.NomeValido;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +22,7 @@ public class Pessoa {
     private Long id;
 
     @Column(nullable = false, length = 150)
+    @NomeValido
     private String nome;
 
     @Column(nullable = false, unique = true, length = 14)
