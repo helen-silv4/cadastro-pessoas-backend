@@ -6,7 +6,7 @@ API REST para cadastro de pessoas com geração automática de login, desenvolvi
 
 > 🎨 Frontend: [cadastro-pessoas-frontend](https://github.com/helen-silv4/cadastro-pessoas-frontend)
 
----
+<br>
 
 ## 🚀 Stack
 
@@ -21,7 +21,7 @@ API REST para cadastro de pessoas com geração automática de login, desenvolvi
 | Containerização | Docker + Docker Compose |
 | CI/CD | GitHub Actions |
 
----
+<br>
 
 ## 📋 Pré-requisitos
 
@@ -29,7 +29,7 @@ API REST para cadastro de pessoas com geração automática de login, desenvolvi
 - Java 21 (para execução local)
 - Maven (para execução local)
 
----
+<br>
 
 ## ▶️ Como executar
 
@@ -62,7 +62,8 @@ Execute o backend:
 ```
 
 > **Nota sobre o Docker:** Este foi meu primeiro contato com Docker na prática. A containerização do ambiente foi um desafio significativo, especialmente com o SQL Server, que exigiu bastante pesquisa e tentativas até funcionar corretamente. Apesar das dificuldades, consegui subir todo o ambiente (banco, backend e frontend) com um único comando: `docker compose up --build` 🙂
----
+
+<br>
 
 ## ✅ Requisitos funcionais
 
@@ -82,7 +83,7 @@ Execute o backend:
 | RF12 | Retorno do cadastro                  | Exibe ao usuário todos os dados cadastrados e o login gerado                                        |
 | RF13 | Feedback de erros                    | Mensagens claras e específicas por campo, no frontend e na API                                      |
 
----
+<br>
 
 ## ⚙️ Requisitos não funcionais
 
@@ -107,7 +108,7 @@ Execute o backend:
 | RNF17 | Orientação a Objetos      | Encapsulamento, abstração e polimorfismo aplicados                      |
 | RNF18 | Publicação                | Diferencial opcional via Railway ou Render                              |
 
----
+<br>
 
 ## 🔐 Algoritmo de geração de login
 
@@ -159,7 +160,7 @@ Se o login base já existir no sistema, o algoritmo avança **letra por letra** 
 - Tentativa 3: `isislas`
 - ... e assim por diante até encontrar um login único.
 
----
+<br>
 
 ## 🗂️ Estrutura do projeto
 
@@ -194,7 +195,7 @@ src/main/java/com/cadastro/pessoas/
     └── NomeValidator.java             # validador de nome
 ```
 
----
+<br>
 
 ## 🗄️ Banco de dados
 
@@ -205,14 +206,13 @@ O banco utilizado é o **SQL Server 2022**, gerenciado via Docker. As migrations
 O sistema já nasce com 20 registros pré-existentes, provenientes de um sistema legado. Por isso as migrations foram divididas em três etapas: criação do banco, criação da tabela e seed dos dados históricos.
 
 
-
 | Versão | Arquivo                         | Descrição                       |
 |--------|---------------------------------|---------------------------------|
 | V0     | `V0__criar_banco.sql`           | Cria o banco `cadastro_pessoas` |
 | V2     | `V2__seed_dados_iniciais.sql`   | Cria a tabela `pessoa`          |
 | V3     | `V3__seed_pessoas.sql`          | Insere os 20 registros legados  |
 
----
+<br>
 
 ## 🧪 Testes
 
@@ -239,7 +239,7 @@ O sistema já nasce com 20 registros pré-existentes, provenientes de um sistema
 - ✅ CEP não encontrado
 - ✅ Login único quando base já existe
 
----
+<br>
 
 ## 📡 Observabilidade
 
