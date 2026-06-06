@@ -46,7 +46,7 @@ public class PessoaService {
         // monta a entidade
         Pessoa pessoa = Pessoa.builder()
             .nome(request.getNome().trim())
-            .documento(request.getDocumento())
+            .documento(request.getDocumento().replaceAll("[^0-9]", ""))
             .email(request.getEmail())
             .dataNascimento(request.getDataNascimento())
             .cep(request.getCep().replaceAll("-", ""))

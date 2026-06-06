@@ -6,6 +6,7 @@ services:
     environment:
       SA_PASSWORD: "Cadastro@123"
       ACCEPT_EULA: "Y"
+      TZ: "America/Sao_Paulo"
     ports:
       - "1433:1433"
     volumes:
@@ -38,6 +39,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:sqlserver://db:1433;databaseName=cadastro_pessoas;encrypt=false
       SPRING_DATASOURCE_USERNAME: sa
       SPRING_DATASOURCE_PASSWORD: Cadastro@123
+      TZ: "America/Sao_Paulo"
     depends_on:
       db:
         condition: service_healthy
