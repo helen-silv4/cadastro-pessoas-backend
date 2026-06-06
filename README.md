@@ -71,7 +71,7 @@ docker compose up db db-init
 Execute o backend:
 
 ```bash
-./mvnw spring-boot:run
+./mvnw spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 <br>
