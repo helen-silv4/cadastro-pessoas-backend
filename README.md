@@ -8,6 +8,8 @@ API REST para cadastro de pessoas com geração automática de login, desenvolvi
 
 <br>
 
+![preview](assets/preview_back.gif)
+
 ## 🚀 Stack
 
 | Camada | Tecnologia |
@@ -61,54 +63,9 @@ Execute o backend:
 ./mvnw spring-boot:run
 ```
 
+<br>
+
 > **Nota sobre o Docker:** Este foi meu primeiro contato com Docker na prática. A containerização do ambiente foi um desafio significativo, especialmente com o SQL Server, que exigiu bastante pesquisa e tentativas até funcionar corretamente. Apesar das dificuldades, consegui subir todo o ambiente (banco, backend e frontend) com um único comando: `docker compose up --build` 🙂
-
-<br>
-
-## ✅ Requisitos funcionais
-
-| ID   | Requisito                            | Resumo                                                                                              |
-|------|--------------------------------------|-----------------------------------------------------------------------------------------------------|
-| RF01 | Cadastro de pessoa                   | Campos: nome, CPF, e-mail, nascimento, CEP, endereço, número (obrigatório) e complemento (opcional) |
-| RF02 | Validação do nome                    | Obrigatório, apenas letras e espaços, sem acentos/cedilha/til, sem espaços excedentes               |
-| RF03 | Validação do CPF                     | Obrigatório, formato `xxx.xxx.xxx-xx`, dígitos verificadores válidos, único no sistema              |
-| RF04 | Validação do e-mail                  | Obrigatório, formato `nome@dominio.com`, único no sistema                                           |
-| RF05 | Validação da data de nascimento      | Obrigatória, data real, não futura, não anterior a 120 anos                                         |
-| RF06 | Validação do CEP                     | Obrigatório, 8 dígitos numéricos, erro claro se não encontrado no ViaCEP                            |
-| RF07 | Preenchimento automático do endereço | Auto-preenche logradouro, bairro, cidade e UF via ViaCEP; número obrigatório; complemento opcional  |
-| RF08 | Geração automática de login          | 7 chars, só letras minúsculas (a–z), sem espaços ou números, construído a partir do nome, único     |
-| RF09 | Unicidade do login                   | Verifica existência antes de persistir; estratégia alternativa determinística e documentada         |
-| RF10 | Persistência dos dados               | Todos os dados e o login gerado armazenados no SQL Server                                           |
-| RF11 | Dados pré-existentes                 | 20 registros do `massa_dados.txt` carregados na inicialização; campos de endereço nulos (legado)    |
-| RF12 | Retorno do cadastro                  | Exibe ao usuário todos os dados cadastrados e o login gerado                                        |
-| RF13 | Feedback de erros                    | Mensagens claras e específicas por campo, no frontend e na API                                      |
-
-<br>
-
-## ⚙️ Requisitos não funcionais
-
-| ID    | Requisito                 | Resumo                                                                  |
-|-------|---------------------------|-------------------------------------------------------------------------|
-| RNF01 | Backend                   | Java 21 + Spring Boot 3 (Web, JPA, Validation, JDBC SQL Server, Lombok) |
-| RNF02 | Frontend                  | Angular 17+, Reactive Forms, Angular Material, HttpClient               |
-| RNF03 | Banco de dados            | SQL Server via Docker (`mssql/server:2022-latest`)                      |
-| RNF04 | Containerização           | Docker + Docker Compose, `docker compose up` sobe tudo                  |
-| RNF05 | Migrations                | Flyway com aplicação automática na inicialização, incluindo seed        |
-| RNF06 | Documentação da API       | SpringDoc OpenAPI — Swagger UI em `/swagger-ui/index.html`              |
-| RNF07 | Validação em duas camadas | Validações no frontend e no backend de forma independente               |
-| RNF08 | Testes automatizados      | JUnit 5 + Mockito, foco no algoritmo de geração de login                |
-| RNF09 | Versionamento             | GitHub com commits organizados e descritivos                            |
-| RNF10 | Identidade visual         | Laranja `#EC7000`, grafite `#1F2D3D`, tom institucional Itaú            |
-| RNF11 | Responsividade            | Funciona em desktop, tablet e mobile                                    |
-| RNF12 | Separação                 | Frontend e backend separados, comunicação exclusiva via REST            |
-| RNF13 | Organização do código     | Camadas, DTOs, nomeação clara, sem código morto                         |
-| RNF14 | Documentação              | README com execução, algoritmo de login explicado e prints de testes    |
-| RNF15 | Design Pattern            | Strategy para geração de login                                          |
-| RNF16 | Observabilidade           | Logs nas operações críticas: cadastro, login, conflitos, ViaCEP         |
-| RNF17 | Orientação a Objetos      | Encapsulamento, abstração e polimorfismo aplicados                      |
-| RNF18 | Publicação                | Diferencial opcional via Railway ou Render                              |
-
-<br>
 
 ## 🔐 Algoritmo de geração de login
 
@@ -253,3 +210,61 @@ O sistema já nasce com 20 registros pré-existentes, provenientes de um sistema
 | Erro de validação         | `WARN`  |
 | Erro de negócio           | `WARN`  |
 | Erro inesperado           | `ERROR` |
+
+
+<br>
+
+## ✅ Requisitos funcionais
+
+| ID   | Requisito                            | Resumo                                                                                              |
+|------|--------------------------------------|-----------------------------------------------------------------------------------------------------|
+| RF01 | Cadastro de pessoa                   | Campos: nome, CPF, e-mail, nascimento, CEP, endereço, número (obrigatório) e complemento (opcional) |
+| RF02 | Validação do nome                    | Obrigatório, apenas letras e espaços, sem acentos/cedilha/til, sem espaços excedentes               |
+| RF03 | Validação do CPF                     | Obrigatório, formato `xxx.xxx.xxx-xx`, dígitos verificadores válidos, único no sistema              |
+| RF04 | Validação do e-mail                  | Obrigatório, formato `nome@dominio.com`, único no sistema                                           |
+| RF05 | Validação da data de nascimento      | Obrigatória, data real, não futura, não anterior a 120 anos                                         |
+| RF06 | Validação do CEP                     | Obrigatório, 8 dígitos numéricos, erro claro se não encontrado no ViaCEP                            |
+| RF07 | Preenchimento automático do endereço | Auto-preenche logradouro, bairro, cidade e UF via ViaCEP; número obrigatório; complemento opcional  |
+| RF08 | Geração automática de login          | 7 chars, só letras minúsculas (a–z), sem espaços ou números, construído a partir do nome, único     |
+| RF09 | Unicidade do login                   | Verifica existência antes de persistir; estratégia alternativa determinística e documentada         |
+| RF10 | Persistência dos dados               | Todos os dados e o login gerado armazenados no SQL Server                                           |
+| RF11 | Dados pré-existentes                 | 20 registros do `massa_dados.txt` carregados na inicialização; campos de endereço nulos (legado)    |
+| RF12 | Retorno do cadastro                  | Exibe ao usuário todos os dados cadastrados e o login gerado                                        |
+| RF13 | Feedback de erros                    | Mensagens claras e específicas por campo, no frontend e na API                                      |
+
+<br>
+
+## ⚙️ Requisitos não funcionais
+
+| ID    | Requisito                 | Resumo                                                                  |
+|-------|---------------------------|-------------------------------------------------------------------------|
+| RNF01 | Backend                   | Java 21 + Spring Boot 3 (Web, JPA, Validation, JDBC SQL Server, Lombok) |
+| RNF02 | Frontend                  | Angular 17+, Reactive Forms, Angular Material, HttpClient               |
+| RNF03 | Banco de dados            | SQL Server via Docker (`mssql/server:2022-latest`)                      |
+| RNF04 | Containerização           | Docker + Docker Compose, `docker compose up` sobe tudo                  |
+| RNF05 | Migrations                | Flyway com aplicação automática na inicialização, incluindo seed        |
+| RNF06 | Documentação da API       | SpringDoc OpenAPI — Swagger UI em `/swagger-ui/index.html`              |
+| RNF07 | Validação em duas camadas | Validações no frontend e no backend de forma independente               |
+| RNF08 | Testes automatizados      | JUnit 5 + Mockito, foco no algoritmo de geração de login                |
+| RNF09 | Versionamento             | GitHub com commits organizados e descritivos                            |
+| RNF10 | Identidade visual         | Laranja `#EC7000`, grafite `#1F2D3D`, tom institucional Itaú            |
+| RNF11 | Responsividade            | Funciona em desktop, tablet e mobile                                    |
+| RNF12 | Separação                 | Frontend e backend separados, comunicação exclusiva via REST            |
+| RNF13 | Organização do código     | Camadas, DTOs, nomeação clara, sem código morto                         |
+| RNF14 | Documentação              | README com execução, algoritmo de login explicado e prints de testes    |
+| RNF15 | Design Pattern            | Strategy para geração de login                                          |
+| RNF16 | Observabilidade           | Logs nas operações críticas: cadastro, login, conflitos, ViaCEP         |
+| RNF17 | Orientação a Objetos      | Encapsulamento, abstração e polimorfismo aplicados                      |
+| RNF18 | Publicação                | Diferencial opcional via Railway ou Render                              |
+
+## 📊 Diagramas
+
+### Diagrama de Caso de Uso
+
+![Diagrama de caso de uso](assets/uso.jpeg)
+
+### Diagrama de Classe
+![Diagrama de classe](assets/classe.png)
+
+### Diagrama de Sequência
+![Diagrama de sequência](assets/sequencia.png)
