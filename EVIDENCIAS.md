@@ -102,6 +102,6 @@ Execução do `./mvnw test` com `Tests run: 14, Failures: 0, Errors: 0, Skipped:
 
 ### Registros persistidos no SQL Server
 
-25 registros no banco: 20 do seed (dados legados) + 5 cadastrados pelo frontend.
+26 registros no banco: 20 do seed (dados legados) + 5 cadastrados pelo frontend + 1 cadastrado pelo backend.
 
 ![Banco de dados](assets/evidencia08.png)
