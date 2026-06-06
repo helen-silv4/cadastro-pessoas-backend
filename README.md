@@ -180,6 +180,14 @@ O sistema já nasce com 20 registros pré-existentes, provenientes de um sistema
 | V2     | `V2__seed_dados_iniciais.sql`   | Cria a tabela `pessoa`          |
 | V3     | `V3__seed_pessoas.sql`          | Insere os 20 registros legados  |
 
+### 🔍 Consultando os dados
+
+Para verificar os registros diretamente no banco via terminal:
+
+```bash
+docker exec -it cadastro-sqlserver //opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Cadastro@123' -No -Q "SELECT id, nome, login FROM cadastro_pessoas.dbo.pessoa"
+```
+
 <br>
 
 ## 🧪 Testes
