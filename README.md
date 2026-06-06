@@ -25,6 +25,17 @@ API REST para cadastro de pessoas com geração automática de login, desenvolvi
 
 <br>
 
+## 🛠️ Ambiente de desenvolvimento
+
+Este projeto foi desenvolvido utilizando:
+
+- [IntelliJ IDEA 2026.1.2](https://www.jetbrains.com/idea/download/)
+- [Java 21.0.11 - Temurin](https://adoptium.net/)
+- [Docker Desktop 29.5.2](https://www.docker.com/products/docker-desktop/)
+- [Git 2.52.0](https://git-scm.com/) + [GitHub](https://github.com/)
+
+<br>
+
 ## 📋 Pré-requisitos
 
 - Docker e Docker Compose
