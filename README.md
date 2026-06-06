@@ -6,6 +6,7 @@ API REST para cadastro de pessoas com geração automática de login, desenvolvi
 
 > 🎨 Frontend: [cadastro-pessoas-frontend](https://github.com/helen-silv4/cadastro-pessoas-frontend)
 
+> 📸 Evidências de testes: [EVIDENCIAS.md](EVIDENCIAS.md)
 <br>
 
 ![preview](assets/preview_back.gif)
