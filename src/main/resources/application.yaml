@@ -21,3 +21,7 @@ spring:
     url: jdbc:sqlserver://db:1433;databaseName=cadastro_pessoas;encrypt=false
     user: sa
     password: Cadastro@123
+
+  web:
+    resources:
+      add-mappings: false
